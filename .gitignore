@@ -1,0 +1,10 @@
+/local/
+/artifacts/
+*.log
+*.pow
+*.exe
+*.dll
+*.pdb
+*.user
+*.local.json
+.vs/

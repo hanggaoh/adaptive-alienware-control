@@ -1,0 +1,16 @@
+{
+  "SchemaVersion": 1,
+  "Description": "Quiet Coding values captured from the machine on 2026-10-17; physical acceptance is still pending.",
+  "Battery": {
+    "AC": {},
+    "DC": {"PERFEPP": 95, "PERFEPP1": 85, "PERFBOOSTMODE": 0, "PERFBOOSTPOL": 35, "PROCTHROTTLEMIN": 5, "PROCTHROTTLEMAX": 100, "SYSCOOLPOL": 0, "SCHEDPOLICY": 4, "SHORTSCHEDPOLICY": 5}
+  },
+  "Coding": {
+    "AC": {"PERFEPP": 45, "PERFEPP1": 45, "PERFBOOSTMODE": 0, "PERFBOOSTPOL": 50, "PROCTHROTTLEMIN": 5, "PROCTHROTTLEMAX": 100, "SYSCOOLPOL": 0, "SCHEDPOLICY": 5, "SHORTSCHEDPOLICY": 5},
+    "DC": {"PERFEPP": 50, "PERFEPP1": 50, "PERFBOOSTMODE": 0, "PERFBOOSTPOL": 35, "PROCTHROTTLEMIN": 5, "PROCTHROTTLEMAX": 100, "SYSCOOLPOL": 0, "SCHEDPOLICY": 4, "SHORTSCHEDPOLICY": 5}
+  },
+  "Gaming": {"AC": {}, "DC": {}},
+  "Shared": {"DisplayIdleSeconds": 1800, "LidAction": 2},
+  "EnergySaver": {"ACThreshold": 0, "DCThreshold": 100, "Policy": 0},
+  "Timing": {"FallbackSeconds": 60, "ExitDelaySeconds": 15}
+}
