@@ -9,10 +9,16 @@ $ErrorActionPreference='Stop'
 . (Join-Path $PSScriptRoot 'Common.ps1')
 $repo=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 Import-Module (Join-Path $repo 'src\PowerScenes.psm1') -Force
+Import-Module (Join-Path $repo 'src\HardwareAdapters.psm1') -Force
+$hardware=Get-CimInstance Win32_ComputerSystem
+$adapter=Resolve-HardwareAdapter -Manufacturer $hardware.Manufacturer -Model $hardware.Model -CatalogDirectory (Join-Path $repo 'config\hardware')
+Assert-ThermalBackend $adapter
 $version=(Get-Content (Join-Path $repo 'VERSION') -Raw).Trim()
 if(-not $PSCmdlet.ShouldProcess($InstallDirectory,"Install $version; create three owned plans and task; enabled=$Enable")){return}
 Assert-Admin
-$profiles=Get-Content (Join-Path $repo 'config\profiles.json') -Raw | ConvertFrom-Json
+$policyPath=[IO.Path]::GetFullPath((Join-Path $repo $adapter.Policy))
+if(-not $policyPath.StartsWith($repo+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)){throw 'Policy path must stay inside the repository'}
+$profiles=Get-Content -LiteralPath $policyPath -Raw | ConvertFrom-Json
 $games=Get-Content (Join-Path $repo 'config\games.json') -Raw | ConvertFrom-Json
 if($profiles.SchemaVersion -ne 1){throw 'Unsupported profile schema'}
 $previous=$null
@@ -34,7 +40,7 @@ try{
  $balanced='381b4222-f694-41f0-9685-ff5bb260df2e'
  $template=$balanced
  if($QuietTemplateGuid -ne [guid]::Empty){$template=$QuietTemplateGuid.ToString()}
- else{
+ elseif($adapter.Id -eq 'alienware-x17-r2'){
   $found=@(Get-CimInstance -Namespace root/cimv2/power -ClassName Win32_PowerPlan | Where-Object ElementName -eq 'Quiet Coding')
   if($found.Count -eq 1 -and $found[0].InstanceID -match '\{([a-fA-F0-9-]{36})\}'){$template=$Matches[1]}
  }
@@ -59,6 +65,8 @@ try{
  New-Item -ItemType Directory -Path (Join-Path $releasePath 'src') -Force | Out-Null
  Copy-Item -LiteralPath (Join-Path $repo 'src\PowerScenes.psm1'),(Join-Path $repo 'src\Watch-Scenes.ps1') -Destination (Join-Path $releasePath 'src')
  Copy-Item -LiteralPath (Join-Path $repo 'VERSION'),(Join-Path $repo 'config\profiles.json'),(Join-Path $repo 'config\games.json') -Destination $releasePath
+ Copy-Item -LiteralPath $policyPath -Destination (Join-Path $releasePath 'profiles.json') -Force
+ $adapter | ConvertTo-Json -Depth 6 | Set-Content (Join-Path $releasePath 'hardware.json') -Encoding UTF8
  $libraries=@()
  if($games.DiscoverAwccLibraries){$libraries=@((Join-Path $env:ProgramData 'Alienware\Alienware Command Center\GameLibrary\GameLibrary.json'),(Join-Path $env:LOCALAPPDATA 'Alienware\Alienware Command Center\GameLibrary\GameLibrary.json'))}
  $config=[pscustomobject]@{Version=3;BatteryPlan=$ids.Battery;QuietPlan=$ids.Coding;GamePlan=$ids.Gaming;GameProcesses=@($games.GameProcesses);GameLibraries=$libraries;

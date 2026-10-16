@@ -1,0 +1,10 @@
+{
+  "SchemaVersion": 1,
+  "Description": "Conservative Windows fallback; inherits native Balanced CPU settings without hybrid-core tuning.",
+  "Battery": {"AC": {}, "DC": {}},
+  "Coding": {"AC": {}, "DC": {}},
+  "Gaming": {"AC": {}, "DC": {}},
+  "Shared": {"DisplayIdleSeconds": 1800, "LidAction": 2},
+  "EnergySaver": {"ACThreshold": 0, "DCThreshold": 100, "Policy": 0},
+  "Timing": {"FallbackSeconds": 60, "ExitDelaySeconds": 15}
+}

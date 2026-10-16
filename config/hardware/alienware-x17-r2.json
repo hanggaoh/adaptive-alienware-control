@@ -1,0 +1,10 @@
+{
+  "SchemaVersion": 1,
+  "Id": "alienware-x17-r2",
+  "Match": {"Manufacturer": "(?i)^(Dell Inc\\.|Alienware)$", "Model": "(?i)^Alienware x17 R2$"},
+  "Validation": "experimental",
+  "Policy": "config/profiles.json",
+  "ThermalBackend": "external",
+  "Capabilities": {"DirectFanWrites": false},
+  "Notes": "Hybrid Intel CPU policy; plug/unplug observed locally. Full thermal and game acceptance pending."
+}

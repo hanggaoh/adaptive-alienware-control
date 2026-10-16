@@ -1,0 +1,10 @@
+{
+  "SchemaVersion": 1,
+  "Id": "generic-windows",
+  "Match": {"Manufacturer": ".*", "Model": ".*"},
+  "Validation": "unvalidated",
+  "Policy": "config/policies/generic-windows.json",
+  "ThermalBackend": "external",
+  "Capabilities": {"DirectFanWrites": false},
+  "Notes": "Windows-only fallback. No vendor firmware commands or thermal mode IDs."
+}

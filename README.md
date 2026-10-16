@@ -1,6 +1,8 @@
 # Quiet Power Scenes
 
-Windows 11 / Alienware x17 R2 的三场景电源配置，当前版本 **0.1.0-experimental**。
+Windows 11 三场景电源控制器，当前版本 **0.1.0-experimental**。支持可扩展机型适配：x17 R2 使用实验调校，其他机型回退到通用 Windows 策略，不套用 x17 R2 的混合核心参数。不是 Dell 官方产品，也不宣称支持所有 Alienware。
+
+适配器接口与支持边界：[Hardware adapters](docs/hardware-adapters.md)。许可证：MIT。AlienFan 后端仅预留设计，目前不写风扇或固件。
 
 | 场景 | Windows 行为 | AWCC |
 |---|---|---|
