@@ -1,4 +1,6 @@
-# Quiet Power Scenes
+# Adaptive Power Scenes
+
+项目已从 Quiet Power Scenes 更名。为兼容已有安装、快照与回退脚本，本版本保留内部任务名及安装/状态目录 `QuietPowerScenes`；这不影响三场景自适应功能。源码目录可以自行改名，正在运行的配置不会因仓库更名而改变。
 
 Windows 11 三场景电源控制器，当前版本 **0.1.0-experimental**。支持可扩展机型适配：x17 R2 使用实验调校，其他机型回退到通用 Windows 策略，不套用 x17 R2 的混合核心参数。不是 Dell 官方产品，也不宣称支持所有 Alienware。
 

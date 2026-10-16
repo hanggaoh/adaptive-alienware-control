@@ -5,21 +5,21 @@
 ## A. 电池
 
 1. 拔电，游戏可仍在运行；电池规则必须优先。
-2. 检查 `Status.ps1` 的 Battery、实际 QPS Battery 计划及 DC 最佳能效。
+2. 检查 `Status.ps1` 的 Battery、实际 APS Battery 计划及 DC 最佳能效。
 3. 在 Windows 设置确认 Energy saver 为 On；看 AWCC 是否显示对应节能状态。
 4. 待温度稳定再记录转速/噪音，不把切换后 30 秒内的残余热量当作失败。
 
 ## B. 插电编码
 
 1. 无游戏时插电。
-2. 检查 Coding 和 QPS Coding 计划，CPU 策略等同版本化的 Quiet Coding 数据。
+2. 检查 Coding 和 APS Coding 计划，CPU 策略等同版本化的 Quiet Coding 数据。
 3. Energy saver 实际为 Off，AWCC 日常默认配置生效。
 4. 测试打字、视频、WSL 编译和 VS 编译响应。不能只看低温就判成功。
 
 ## C. 插电玩游戏
 
 1. 启动 AWCC/名单登记的游戏。
-2. 检查 Gaming、QPS Gaming 计划、AC Balanced power mode。
+2. 检查 Gaming、APS Gaming 计划、AC Balanced power mode。
 3. Energy saver 实际 Off；AWCC 识别正确的游戏并选择用户保存的配置。
 4. 在真实游戏前台记录帧率/卡顿与噪音。任务管理器前台/游戏失去焦点时的数据不能当作游戏瓶颈结论。
 5. 退出全部游戏，约 15 秒后回 Coding；第二个游戏仍运行时不能回 Coding。
