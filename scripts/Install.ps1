@@ -49,7 +49,7 @@ try{
   $id=[guid]::NewGuid().ToString();$ids[$scene]=$id
   $base=if($scene -eq 'Gaming'){$balanced}else{$template}
   Invoke-PC @('/duplicatescheme',$base,$id);$created+=$id
-  Invoke-PC @('/changename',$id,"APS $scene $version","Owned by QuietPowerScenes release $releaseId")
+  Invoke-PC @('/changename',$id,"AAC $scene $version","Owned by QuietPowerScenes release $releaseId")
   foreach($side in @('AC','DC')){
    foreach($setting in $profiles.$scene.$side.PSObject.Properties){
     if($setting.Name -notmatch '^[A-Z0-9_]+$' -or [int]$setting.Value -lt 0 -or [int]$setting.Value -gt 100){throw 'Invalid processor profile setting'}

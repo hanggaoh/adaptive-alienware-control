@@ -1,4 +1,4 @@
-# Adaptive Power Scenes
+# Adaptive Alienware Control
 
 项目已从 Quiet Power Scenes 更名。为兼容已有安装、快照与回退脚本，本版本保留内部任务名及安装/状态目录 `QuietPowerScenes`；这不影响三场景自适应功能。源码目录可以自行改名，正在运行的配置不会因仓库更名而改变。
 

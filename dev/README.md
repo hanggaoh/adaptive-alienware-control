@@ -5,10 +5,10 @@ These helpers are opt-in. The power-profile installer does not copy them into WS
 WSL, after activating your project's virtual environment:
 
 ```bash
-bash /mnt/c/path/to/adaptive-power-scenes/dev/quiet-dev make
-bash /mnt/c/path/to/adaptive-power-scenes/dev/quiet-dev cmake build
-bash /mnt/c/path/to/adaptive-power-scenes/dev/quiet-dev run python script.py
-bash /mnt/c/path/to/adaptive-power-scenes/dev/quiet-dev torch python train.py
+bash /mnt/c/path/to/adaptive-alienware-control/dev/quiet-dev make
+bash /mnt/c/path/to/adaptive-alienware-control/dev/quiet-dev cmake build
+bash /mnt/c/path/to/adaptive-alienware-control/dev/quiet-dev run python script.py
+bash /mnt/c/path/to/adaptive-alienware-control/dev/quiet-dev torch python train.py
 ```
 
 Defaults: build jobs 8, CPU libraries 6 threads; dedicated `torch` entry adds inter-op 2. GPU is unrestricted. Torch entry imports Torch before your script; for torchrun/multiprocessing/complex launchers use `run` and configure Torch threads in your code. DataLoader worker count is not modified.
